@@ -85,7 +85,7 @@ class AssertExtensions {
 		} catch (ComparisonFailure e) {
 			throw e
 		} catch (AssertionError e) {
-			throw new ComparisonFailureEx(e.message, expected?.toString, actual?.toString, e)
+			throw new ComparisonFailureEx(e.message, expected?.toArrayString, actual?.toArrayString, e)
 		}
 	}
 	

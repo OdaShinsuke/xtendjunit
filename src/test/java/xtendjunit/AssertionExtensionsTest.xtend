@@ -4,19 +4,20 @@ import static org.junit.Assert.*
 import static extension xtendjunit.AssertExtensions.*
 import org.junit.Test
 import org.junit.ComparisonFailure
+import org.junit.Ignore
 
 class AssertionExtensionsTest {
-	@Test def void basicConfirmMessage() {
+	@Test @Ignore def void basicConfirmMessage() {
 		val actual = new NoOverrideEquals => [id = 1 name = "bbb"]
 		val expected = new NoOverrideEquals => [id = 1 name = "ddd"]
 		assertEquals("message", expected, actual)
 	}
-	@Test def void confirmMessage() {
+	@Test @Ignore def void confirmMessage() {
 		val actual = new NoOverrideEquals => [id = 1 name = "bbb"]
 		val expected = new NoOverrideEquals => [id = 1 name = "ddd"]
 		actual.is("message", expected)
 	}
-	@Test def void confirmMessage_List() {
+	@Test @Ignore def void confirmMessage_List() {
 		val actual = #[
 			new NoOverrideEquals => [id = 1 name = "aaa"], 
 			new NoOverrideEquals => [id = 2 name = "bbb"], 
@@ -179,7 +180,7 @@ class AssertionExtensionsTest {
 			actual.is(expected) [e, a | e.id == a.id]
 			fail("例外が発生しない")
 		} catch (ComparisonFailure e) {
-			assertEquals(actual.toString, e.actual)
+			assertEquals(actual.toList.toString, e.actual)
 			assertEquals(expected.toString, e.expected)
 		}
 	}
