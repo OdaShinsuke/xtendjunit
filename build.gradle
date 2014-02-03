@@ -1,0 +1,29 @@
+apply plugin: 'java'
+
+group 'xtendjunit'
+archiveBaseName = 'xtendjunit'
+version = '0.0.1'
+
+repositories {
+  mavenCentral()
+  maven { url 'http://build.eclipse.org/common/xtend/maven/' }
+}
+
+dependencies {
+  compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.5.0'
+  compile 'org.apache.commons:commons-lang3:3.1'
+  compile 'junit:junit:4.11'
+}
+
+sourceSets {
+  main {
+    java { srcDir 'src/main/xtend-gen' }
+  }
+  test {
+    java { srcDir 'src/test/xtend-gen' }
+  }
+}
+
+sourceCompatibility = targetCompatibility = '1.7'
+def defaultEncoding = 'UTF-8'
+tasks.withType(AbstractCompile) each { it.options.encoding = defaultEncoding }
